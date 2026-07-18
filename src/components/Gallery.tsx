@@ -1,12 +1,12 @@
 import Reveal from "./Reveal";
 
 const POSTS = [
-  { handle: "@ritual.keeper", caption: "Morning ritual with the Lemongrass Soap. My skin has never felt this alive.", likes: 142, gradient: "linear-gradient(150deg,#b8442a,#d8bf94)" },
-  { handle: "@ancestral.glow", caption: "The Daily Cleanser is my sacred pause. This is what self-care looks like.", likes: 98, gradient: "linear-gradient(150deg,#262f5a,#74814f)" },
-  { handle: "@kamoka.love", caption: "Heritage Collection arrived and I'm obsessed. Gifting this to everyone I love.", likes: 215, gradient: "linear-gradient(150deg,#1a2144,#b8442a)" },
-  { handle: "@slowliving.ritual", caption: "Slow Sunday ritual. The smell of lemongrass is healing.", likes: 176, gradient: "linear-gradient(150deg,#74814f,#d8bf94)" },
-  { handle: "@roots.and.glow", caption: "Connecting cultures, one ritual at a time. Thank you @Limenakorituals.", likes: 133, gradient: "linear-gradient(150deg,#d1552f,#262f5a)" },
-  { handle: "@sacred.corner", caption: "My ritual corner. Limenako has completely changed my relationship with skincare.", likes: 89, gradient: "linear-gradient(150deg,#b8442a,#1a2144)" },
+  { handle: "@ritual.keeper", caption: "Morning ritual with the Lemongrass Soap. My skin has never felt this alive.", likes: 142, gradient: "linear-gradient(150deg,#b0663f,#d8bf8a)" },
+  { handle: "@ancestral.glow", caption: "The Daily Cleanser is my sacred pause. This is what self-care looks like.", likes: 98, gradient: "linear-gradient(150deg,#3f7a4e,#7d9068)" },
+  { handle: "@kamoka.love", caption: "Heritage Collection arrived and I'm obsessed. Gifting this to everyone I love.", likes: 215, gradient: "linear-gradient(150deg,#2b4a3a,#b0663f)" },
+  { handle: "@slowliving.ritual", caption: "Slow Sunday ritual. The smell of lemongrass is healing.", likes: 176, gradient: "linear-gradient(150deg,#7d9068,#d8bf8a)" },
+  { handle: "@roots.and.glow", caption: "Connecting cultures, one ritual at a time. Thank you @Limenakorituals.", likes: 133, gradient: "linear-gradient(150deg,#b0663f,#2b4a3a)" },
+  { handle: "@sacred.corner", caption: "My ritual corner. Limenako has completely changed my relationship with skincare.", likes: 89, gradient: "linear-gradient(150deg,#3f7a4e,#d8bf8a)" },
 ];
 
 export default function Gallery() {
@@ -20,7 +20,7 @@ export default function Gallery() {
                 @Limenakorituals
               </p>
               <h2 className="display-tight text-5xl text-ink md:text-7xl">
-                The World of <span className="font-serif italic">Limenako</span>
+                The World of <span className="text-leaf">Limenako</span>
               </h2>
             </div>
             <a
@@ -41,7 +41,7 @@ export default function Gallery() {
                 className="group relative aspect-square overflow-hidden rounded-sm"
                 style={{ background: post.gradient }}
               >
-                <figcaption className="absolute inset-0 flex flex-col justify-end bg-indigo-deep/0 p-5 opacity-0 transition-all duration-300 group-hover:bg-indigo-deep/75 group-hover:opacity-100">
+                <figcaption className="absolute inset-0 flex flex-col justify-end bg-leaf-deep/0 p-5 opacity-0 transition-all duration-300 group-hover:bg-leaf-deep/80 group-hover:opacity-100">
                   <p className="text-sm leading-snug text-paper">{post.caption}</p>
                   <div className="mt-3 flex items-center justify-between text-[11px] font-semibold uppercase tracking-wide-sm text-paper/80">
                     <span>{post.handle}</span>

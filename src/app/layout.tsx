@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Fraunces, Hanken_Grotesk } from "next/font/google";
+import { Young_Serif, Newsreader, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import CartDrawer from "@/components/CartDrawer";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const youngSerif = Young_Serif({
+  variable: "--font-young-serif",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
+  weight: "400",
+});
+
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
   style: ["normal", "italic"],
 });
 
@@ -19,7 +24,7 @@ const hanken = Hanken_Grotesk({
 export const metadata: Metadata = {
   title: "Limenako — Simply Sacred",
   description:
-    "Sacred skincare born between Ho Chi Minh City and Southern Africa. Reclaim your glow through rituals rooted in ancestry.",
+    "Sacred botanical skincare born between Ho Chi Minh City and Southern Africa. Reclaim your glow through rituals rooted in ancestry.",
 };
 
 export default function RootLayout({
@@ -28,14 +33,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${hanken.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700,500,400&display=swap"
-        />
-      </head>
+    <html
+      lang="en"
+      className={`${youngSerif.variable} ${newsreader.variable} ${hanken.variable}`}
+    >
       <body className="min-h-screen bg-paper text-ink">
         <CartProvider>
           {children}

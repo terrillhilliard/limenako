@@ -3,7 +3,7 @@ import NewsletterForm from "./NewsletterForm";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-indigo-deep text-paper">
+    <footer className="relative overflow-hidden bg-leaf-deep text-paper">
       {/* Oversized wordmark band */}
       <div className="overflow-hidden border-b border-paper/10 py-10">
         <p className="display-tight whitespace-nowrap text-center text-[19vw] uppercase leading-none text-paper/10">
@@ -38,7 +38,7 @@ export default function Footer() {
             <p className="text-[11px] font-semibold uppercase tracking-wide-sm text-sand">
               Sacred Dispatches
             </p>
-            <p className="mt-5 font-serif text-2xl italic">Join the Ritual</p>
+            <p className="mt-5 font-serif text-2xl">Join the Ritual</p>
             <p className="mt-2 max-w-sm text-sm text-paper/60">
               Stories of ancestry, new rituals, and exclusive offerings — delivered with intention.
             </p>

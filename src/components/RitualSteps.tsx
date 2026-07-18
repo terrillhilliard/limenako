@@ -10,7 +10,7 @@ const STEPS = [
 
 export default function RitualSteps() {
   return (
-    <section id="ritual" className="relative overflow-hidden bg-indigo text-paper">
+    <section id="ritual" className="relative overflow-hidden bg-leaf text-paper">
       <div className="border-b border-paper/15 py-3 text-[11px] font-semibold uppercase tracking-wide-sm text-sand">
         <Marquee
           slow
@@ -25,19 +25,19 @@ export default function RitualSteps() {
               Your Daily Practice
             </p>
             <h2 className="display-tight text-5xl md:text-7xl">
-              The <span className="font-serif italic text-sand">Ritual</span>
+              The <span className="text-sand">Ritual</span>
             </h2>
           </div>
         </Reveal>
 
         <div className="grid grid-cols-1 gap-px overflow-hidden rounded-sm bg-paper/15 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (
-            <Reveal key={step.number} delay={i * 0.08} className="group bg-indigo">
+            <Reveal key={step.number} delay={i * 0.08} className="group bg-leaf">
               <div className="flex h-full flex-col p-8 transition-colors duration-300 group-hover:bg-terra">
                 <span className="display-tight text-6xl text-sand transition-colors duration-300 group-hover:text-paper md:text-7xl">
                   {step.number}
                 </span>
-                <h3 className="mt-8 font-serif text-2xl italic">{step.title}</h3>
+                <h3 className="mt-8 font-serif text-2xl">{step.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-paper/70 transition-colors duration-300 group-hover:text-paper/90">
                   {step.description}
                 </p>

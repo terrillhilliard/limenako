@@ -20,7 +20,7 @@ export default function Story() {
           <Reveal delay={0.05}>
             <h2 className="display-tight text-5xl text-ink md:text-7xl">
               You,
-              <span className="font-serif italic text-terra"> reclaimed.</span>
+              <span className="text-terra"> reclaimed.</span>
             </h2>
           </Reveal>
 
@@ -42,7 +42,7 @@ export default function Story() {
           </Reveal>
 
           <Reveal delay={0.24}>
-            <p className="mt-10 font-serif text-2xl italic text-indigo">
+            <p className="mt-10 font-serif text-2xl italic text-leaf">
               &ldquo;Respect your ritual.&rdquo;
             </p>
           </Reveal>

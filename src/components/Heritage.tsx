@@ -2,7 +2,7 @@ import Reveal from "./Reveal";
 
 export default function Heritage() {
   return (
-    <section id="heritage" className="relative overflow-hidden bg-terra text-paper">
+    <section id="heritage" className="relative overflow-hidden bg-clay text-paper">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-0 md:grid-cols-2">
         {/* Left: statement */}
         <div className="flex flex-col justify-center px-5 py-24 md:px-10 md:py-36">
@@ -15,7 +15,7 @@ export default function Heritage() {
             <h2 className="display-tight text-6xl leading-[0.85] md:text-8xl">
               Connecting
               <br />
-              <span className="font-serif italic">Cultures</span>
+              <span className="text-sand">Cultures</span>
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
@@ -39,14 +39,14 @@ export default function Heritage() {
           </Reveal>
         </div>
 
-        {/* Right: indigo testimonial panel */}
-        <div className="relative flex flex-col justify-center bg-indigo px-5 py-24 md:px-14 md:py-36">
+        {/* Right: deep-green testimonial panel */}
+        <div className="relative flex flex-col justify-center bg-leaf-deep px-5 py-24 md:px-14 md:py-36">
           <div aria-hidden className="absolute right-8 top-10 h-28 w-28 rounded-full border border-paper/20" />
           <div aria-hidden className="absolute bottom-12 left-10 h-16 w-16 border border-paper/15" style={{ transform: "rotate(45deg)" }} />
           <Reveal delay={0.1}>
             <span className="font-serif text-8xl leading-none text-sand">&ldquo;</span>
             <blockquote className="mt-2">
-              <p className="font-serif text-3xl italic leading-snug md:text-4xl">
+              <p className="font-serif text-3xl leading-snug md:text-4xl">
                 My skin has never felt this alive. Limenako isn&rsquo;t just
                 skincare — it&rsquo;s a homecoming.
               </p>

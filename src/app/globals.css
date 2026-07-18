@@ -1,39 +1,52 @@
+/* Hallmark · genre: editorial · macrostructure: Catalogue · theme: Garden
+ * design-system: design.md · designed-as-app · anchor hue: leaf-green + clay pop
+ * pre-emit critique: P5 H4 E4 S5 R4 V4
+ */
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ *
- * Limenako — Cross-Cultural Modern
- * HCMC × Southern Africa · terracotta / indigo / raw clay on warm cream
+ * Limenako — Garden (Hallmark)
+ * Botanical editorial · oat-cream paper · leaf-green + clay accents
  * ------------------------------------------------------------------ */
 
 :root {
-  --paper: #ece2d0;
-  --paper-2: #e3d5bd;
-  --paper-3: #f3ecdd;
-  --ink: #17120d;
-  --ink-soft: #3d342a;
-  --terra: #b8442a;
-  --terra-bright: #d1552f;
-  --indigo: #262f5a;
-  --indigo-deep: #1a2144;
-  --sand: #d8bf94;
-  --sage: #74814f;
+  --paper: oklch(95.5% 0.022 92);
+  --paper-2: oklch(92.5% 0.026 92);
+  --paper-3: oklch(88.5% 0.03 90);
+  --rule: oklch(83% 0.028 115);
+  --ink: oklch(24% 0.052 152);
+  --ink-soft: oklch(40% 0.045 142);
+  --leaf: oklch(47% 0.13 140);
+  --leaf-deep: oklch(33% 0.05 150);
+  --clay: oklch(54% 0.14 46);
+  --clay-bright: oklch(60% 0.15 46);
+  --sand: oklch(80% 0.09 85);
+  --focus: oklch(47% 0.13 140);
+
+  --tint-moss: oklch(47% 0.13 140 / 0.1);
+  --tint-clay: oklch(54% 0.14 46 / 0.1);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
   --color-paper-3: var(--paper-3);
+  --color-rule: var(--rule);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-terra: var(--terra);
-  --color-terra-bright: var(--terra-bright);
-  --color-indigo: var(--indigo);
-  --color-indigo-deep: var(--indigo-deep);
+  --color-leaf: var(--leaf);
+  --color-leaf-deep: var(--leaf-deep);
+  --color-clay: var(--clay);
+  --color-clay-bright: var(--clay-bright);
+  /* terra* kept as aliases of clay so existing utility classes carry the brand's warm pop */
+  --color-terra: var(--clay);
+  --color-terra-bright: var(--clay-bright);
   --color-sand: var(--sand);
-  --color-sage: var(--sage);
 
-  --font-display: "Clash Display", var(--font-fraunces), Georgia, serif;
-  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-display: var(--font-young-serif), ui-serif, Georgia, serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
   --font-body: var(--font-hanken), system-ui, sans-serif;
 }
 
@@ -49,14 +62,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Fine film grain over the whole page for tactile warmth */
+/* Fine botanical grain for tactile, printed-almanac warmth */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.35;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
@@ -66,24 +79,35 @@ body::after {
   letter-spacing: 0.32em;
 }
 .tracking-wide-sm {
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
+}
+.tracking-label {
+  letter-spacing: 0.14em;
 }
 
+/* Herbarium specimen tag */
+.specimen-tag {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* Young Serif display face (roman — no italic headers, Hallmark gate 38a) */
 .display-tight {
   font-family: var(--font-display);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  font-weight: 600;
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.006em;
 }
 
-.edge-line {
-  background-image: repeating-linear-gradient(
-    90deg,
-    currentColor 0,
-    currentColor 6px,
-    transparent 6px,
-    transparent 12px
-  );
+/* Botanical section tints */
+.tint-moss {
+  background: var(--tint-moss);
+}
+.tint-clay {
+  background: var(--tint-clay);
 }
 
 /* Marquee ------------------------------------------------------------ */
@@ -96,10 +120,10 @@ body::after {
   }
 }
 .animate-marquee {
-  animation: marquee 28s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 .animate-marquee-slow {
-  animation: marquee 46s linear infinite;
+  animation: marquee 48s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -112,10 +136,10 @@ body::after {
   }
 }
 
-/* Stripe PaymentElement sits on cream — keep it legible */
+/* Stripe PaymentElement on cream */
 .stripe-shell {
   background: var(--paper-3);
-  border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
-  border-radius: 2px;
+  border: 1px solid color-mix(in oklch, var(--ink) 12%, transparent);
+  border-radius: 10px;
   padding: 1.25rem;
 }

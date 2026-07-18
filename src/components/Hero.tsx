@@ -15,7 +15,7 @@ export default function Hero() {
           animate={{ scaleY: 1 }}
           transition={{ duration: 1.1, ease }}
           style={{ transformOrigin: "top" }}
-          className="absolute right-0 top-0 h-full w-[38%] bg-indigo"
+          className="absolute right-0 top-0 h-full w-[38%] bg-leaf"
         />
         <motion.div
           initial={{ scaleY: 0 }}
@@ -25,7 +25,7 @@ export default function Hero() {
           className="absolute bottom-0 left-0 h-[42%] w-[46%] bg-terra"
         />
         <div className="absolute right-[38%] top-1/3 hidden h-40 w-40 -translate-x-1/2 rounded-full border border-terra/40 md:block" />
-        <div className="absolute left-[8%] top-[22%] hidden h-24 w-24 border border-indigo/30 md:block" style={{ transform: "rotate(45deg)" }} />
+        <div className="absolute left-[8%] top-[22%] hidden h-24 w-24 border border-leaf/30 md:block" style={{ transform: "rotate(45deg)" }} />
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-[1400px] flex-col justify-center px-5 md:px-10">
@@ -53,7 +53,7 @@ export default function Hero() {
             transition={{ duration: 0.9, delay: 0.58, ease }}
             className="block pl-[12vw] text-[19vw] leading-[0.82] md:pl-[22vw] md:text-[13vw]"
           >
-            <span className="font-serif italic text-terra">Sacred</span>
+            <span className="text-terra">Sacred</span>
           </motion.span>
         </h1>
 

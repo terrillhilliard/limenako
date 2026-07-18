@@ -13,7 +13,7 @@ export default function Products() {
                 The Collection
               </p>
               <h2 className="display-tight text-5xl text-ink md:text-7xl">
-                Sacred <span className="font-serif italic">Essentials</span>
+                Sacred <span className="text-leaf">Essentials</span>
               </h2>
             </div>
             <p className="text-[11px] font-semibold uppercase tracking-wide-sm text-ink-soft md:text-right">

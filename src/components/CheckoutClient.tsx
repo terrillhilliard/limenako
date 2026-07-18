@@ -50,7 +50,7 @@ export default function CheckoutClient() {
     return (
       <div className="mx-auto max-w-lg px-6 py-40 text-center">
         <p className="display-tight text-5xl uppercase text-ink">Empty</p>
-        <p className="mt-4 font-serif text-xl italic text-ink-soft">Your cart is empty.</p>
+        <p className="mt-4 font-serif text-xl text-ink-soft">Your cart is empty.</p>
         <Link
           href="/#products"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra"
@@ -66,7 +66,7 @@ export default function CheckoutClient() {
       <div>
         <p className="mb-4 text-[11px] font-semibold uppercase tracking-mega text-terra">Checkout</p>
         <h1 className="display-tight text-5xl text-ink md:text-6xl">
-          Your <span className="font-serif italic">order</span>
+          Your <span className="text-leaf">order</span>
         </h1>
 
         <ul className="mt-10 divide-y divide-ink/10 border-y border-ink/15">

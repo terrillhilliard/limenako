@@ -73,7 +73,7 @@ export default function DistributorForm() {
   if (status === "success") {
     return (
       <div className="border border-paper/20 bg-paper/5 p-12 text-center">
-        <p className="font-serif text-3xl italic text-sand">Inquiry received.</p>
+        <p className="font-serif text-3xl text-sand">Inquiry received.</p>
         <p className="mt-3 text-sm text-paper/60">We respond within 3–5 business days.</p>
       </div>
     );

@@ -22,7 +22,7 @@ export default function CartDrawer() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-indigo-deep/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-leaf-deep/60 backdrop-blur-sm"
           />
 
           <motion.aside
@@ -46,7 +46,7 @@ export default function CartDrawer() {
 
             <div className="flex-1 overflow-y-auto px-7 py-6">
               {lines.length === 0 ? (
-                <p className="mt-6 font-serif text-xl italic text-ink-soft">
+                <p className="mt-6 font-serif text-xl text-ink-soft">
                   Your cart is empty.
                 </p>
               ) : (

@@ -20,9 +20,9 @@ export default function CheckoutSuccessPage() {
           Order Confirmed
         </p>
         <h1 className="display-tight text-6xl uppercase text-ink md:text-7xl">
-          Thank <span className="font-serif italic text-terra">you.</span>
+          Thank <span className="text-terra">you.</span>
         </h1>
-        <p className="mt-6 font-serif text-xl italic text-ink-soft">
+        <p className="mt-6 font-serif text-xl text-ink-soft">
           Your ritual is on its way. A receipt is headed to your inbox.
         </p>
         <Link

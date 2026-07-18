@@ -28,7 +28,7 @@ export default function NewsletterForm() {
 
   if (status === "success") {
     return (
-      <p className="font-serif text-lg italic text-sand">
+      <p className="font-serif text-lg text-sand">
         You&rsquo;re in. Welcome to the ritual.
       </p>
     );
