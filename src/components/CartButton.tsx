@@ -10,12 +10,12 @@ export default function CartButton() {
       type="button"
       onClick={open}
       aria-label="Open cart"
-      className="group relative inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide-sm text-ink transition-colors hover:text-terra"
+      className="inline-flex items-center gap-2 text-[13px] text-ink-2/80 transition-colors hover:text-accent"
     >
-      Cart
+      cart
       <span
-        className={`flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[10px] font-semibold transition-colors ${
-          itemCount > 0 ? "bg-terra text-paper" : "bg-ink/10 text-ink/50"
+        className={`flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 font-mono text-[10px] transition-colors ${
+          itemCount > 0 ? "bg-accent text-paper" : "bg-ink/10 text-ink-2/50"
         }`}
       >
         {itemCount}

@@ -27,15 +27,11 @@ export default function NewsletterForm() {
   }
 
   if (status === "success") {
-    return (
-      <p className="font-serif text-lg text-sand">
-        You&rsquo;re in. Welcome to the ritual.
-      </p>
-    );
+    return <p className="display text-lg text-accent">you are in. welcome to the ritual.</p>;
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-3 border-b border-paper/25 py-2 focus-within:border-sand">
+    <form onSubmit={handleSubmit} className="flex items-center gap-3 border-b border-rule py-2 focus-within:border-accent">
       <input
         type="email"
         required
@@ -43,20 +39,18 @@ export default function NewsletterForm() {
         autoComplete="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Your email address"
-        className="flex-1 bg-transparent text-sm text-paper outline-none placeholder:text-paper/40"
+        placeholder="your email address"
+        className="flex-1 bg-transparent text-[14px] text-ink outline-none placeholder:text-ink-2/40"
       />
       <button
         type="submit"
         disabled={status === "loading"}
         aria-label="Subscribe"
-        className="shrink-0 text-[11px] font-semibold uppercase tracking-wide-sm text-sand transition-colors hover:text-paper disabled:opacity-60"
+        className="shrink-0 font-mono text-[11px] uppercase tracking-[0.1em] text-accent transition-colors hover:text-ink disabled:opacity-60"
       >
-        {status === "loading" ? "…" : "Subscribe →"}
+        {status === "loading" ? "…" : "subscribe →"}
       </button>
-      {status === "error" && (
-        <span className="text-[11px] text-terra-bright">Try again</span>
-      )}
+      {status === "error" && <span className="font-mono text-[11px] text-accent">retry</span>}
     </form>
   );
 }

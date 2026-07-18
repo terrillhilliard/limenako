@@ -1,78 +1,53 @@
 # Design — Limenako
 
-A locked design system for this app, produced by `hallmark redesign` (Garden theme,
-editorial genre). Every page redesign reads this file before emitting code. Do not
-regenerate per page — extend or amend this file when the system needs to grow.
+Locked design system. Theme: **Lumen (Night Foundry)**, tuned to the base44
+navy/cream/gold palette. Structure/DNA studied from the Hallmark Lumen example;
+content + colour from the base44 Limenako site.
 
-/ Hallmark · genre: editorial · theme: Garden · design-system: design.md · designed-as-app /
+/ Hallmark · genre: editorial · theme: Lumen · macrostructure: Marquee Hero · designed-as-app /
 
 ## Genre
-editorial
+editorial (Lumen register, adapted from AI-tool to botanical apothecary)
 
 ## Macrostructure family
-- Marketing pages (`/`): **Catalogue** — botanical almanac rhythm; index-style section
-  heads, specimen tags, generous section gaps. Hero is typographic (no enrichment beyond
-  CSS botanical tints).
-- App pages (`/checkout`, `/checkout/success`): **Workbench** — function-first, order
-  summary + form, no enrichment.
+- Marketing (`/`): **Marquee Hero** — botanical specimen apparatus at hero-right,
+  lowercase serif headline + gold verb at hero-left, meter strip below.
+- App (`/checkout`): **Workbench** — order summary + form, no apparatus.
 
-Pages within a family share the family's shape; they vary only in component archetypes.
+## Theme — Lumen Night, base44 palette (OKLCH)
+- `--paper`   oklch(17% 0.03 258)   /* deep navy canvas */
+- `--paper-2` oklch(21% 0.035 258)  /* base44 navy #1A2B42 — cards/bands */
+- `--ink`     oklch(97% 0.01 92)    /* cream #FDFBF7 headlines */
+- `--ink-2`   oklch(88% 0.012 92)   /* cream body */
+- `--accent`  oklch(78% 0.12 90)    /* gold #D4AF37 — brass accent / verb landmark */
+- `--rule`    oklch(97% 0.01 92 / 0.16)  /* hairline */
 
-## Theme — Garden (OKLCH)
-- `--color-paper`    oklch(95.5% 0.022 92)   /* warm oat cream */
-- `--color-paper-2`  oklch(92.5% 0.026 92)   /* tinted band */
-- `--color-paper-3`  oklch(88.5% 0.030 90)   /* hover / deeper */
-- `--color-rule`     oklch(83%   0.028 115)  /* soft green-grey hairline */
-- `--color-ink`      oklch(24%   0.052 152)  /* botanical near-black green */
-- `--color-ink-soft` oklch(40%   0.045 142)  /* body / captions */
-- `--color-leaf`     oklch(47%   0.13  140)  /* living leaf-green — primary accent */
-- `--color-leaf-deep`oklch(33%   0.050 150)  /* deep green — dark sections */
-- `--color-clay`     oklch(54%   0.14  46)   /* earthy clay/terracotta — secondary pop */
-- `--color-sand`     oklch(80%   0.09  85)   /* warm oat — on-dark eyebrows */
-- `--color-focus`    oklch(47%   0.13  140)
+## Typography — two-register (Lumen signature)
+- Display: Instrument Serif 400, **lowercase, upright, no italic ever**
+- Body:    Geist 400/500, **lowercase**
+- Mono:    JetBrains Mono — **UPPERCASE labels only** (eyebrows, callouts, stat labels)
+- All prose lowercase (headlines, nav, brand, footer, place & proper names).
+  Mono labels are the only uppercase surface. This split is non-negotiable.
 
-Accent placement ≤ 5% per viewport. Leaf is the primary landmark; clay is the warm pop
-(carries the brand's terracotta lineage). No indigo.
-
-## Typography
-- Display: Young Serif, weight 400, style normal (roman — organic botanical serif)
-- Body:    Hanken Grotesk, weight 400/500
-- Serif:   Newsreader (running prose / quotes; italic allowed in body only)
-- Label:   uppercase Hanken, tracking 0.14em (herbarium specimen tags)
-- Display tracking: -0.006em
-- Type scale anchor: --text-display = clamp(2.85rem, 5.2vw + 1rem, 5rem)
-
-**No italic headers** (Hallmark gate 38a). Emphasis in headings is carried by the leaf
-or clay accent colour, never italics. Italic survives only in running body / quotes.
-
-## Spacing
-4-point named scale in `tokens.css`. Pages use named tokens, never raw values.
+## Seven signature moves (all required)
+1. Hand-built **botanical specimen apparatus** (not a glowing orb) with leader-line
+   callouts carrying REAL facts (100% NATURAL · COLD-PROCESSED · LEMONGRASS).
+2. Lowercase serif headline with exactly **one gold verb** + 1px draw-in underline.
+3. Mono UPPERCASE eyebrow above every section (`00 · THE RITUAL`).
+4. Blueprint grid background (4% hairline) on the hero.
+5. Meter strip below the hero (procedural ticks + mono labels, real values).
+6. Hairline cards lit from within (inner gold radial ≤ 6% rest / 12% hover).
+7. Three-stat row in Instrument Serif numerals, tabular-nums (100% · 4 · 2 — honest).
 
 ## Motion
-- Easing: cubic-bezier(0.16, 1, 0.3, 1) named `--ease-out`
-- Reveal pattern: fade + short slide, once, on scroll into view
-- Reduced-motion fallback: opacity-only, ≤ 150 ms; marquee + smooth-scroll disabled
-
-## Microinteractions stance
-- Silent success over celebratory toasts (add-to-cart pulses inline)
-- Hover underline grows from left; focus ring instant, never animated
-- Under three motion primitives per page
+- Apparatus filament: 3% pulse, 4s, never rotates.
+- Verb underline: draws in once (340ms, delay 820ms), then permanent.
+- Section heads: fade-up on view. Reduced-motion → instant final state (MotionConfig).
 
 ## CTA voice
-- Primary CTA: solid ink pill, hover → leaf fill, arrow nudge on hover
-- Secondary CTA: hairline outline pill, hover → ink fill
+- Primary: solid gold pill, dark ink text (lowercase).
+- Secondary: hairline outline pill.
 
-## Per-page allowances
-- Marketing (`/`) MAY use CSS botanical tints (moss/clay section bands) — Tier-A only.
-- App (`/checkout`) MUST NOT use enrichment — function carries the page.
-
-## What pages MUST share
-- The Limenako wordmark (Young Serif, uppercase, specimen-tag ✳).
-- The accent colours (leaf primary, clay pop) and ≤ 5% placement.
-- Young Serif display + Hanken body + Newsreader serif.
-- The CTA pill voice (shape, padding, hover).
-- Section heading rhythm: specimen tag (uppercase, tracked) + display heading.
-
-## What pages MAY differ on
-- Macrostructure within the page-type family.
-- Hero / section-head archetype within the family's allowance.
+## Anti-patterns (Lumen)
+No italics anywhere · no glowing orb · no invented metrics · no title/sentence case
+prose · no emoji-in-eyebrow · three-cell stat rows only.

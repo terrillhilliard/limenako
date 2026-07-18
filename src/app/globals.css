@@ -1,70 +1,220 @@
-/* Hallmark · genre: editorial · macrostructure: Catalogue · theme: Garden
- * design-system: design.md · designed-as-app · anchor hue: leaf-green + clay pop
- * pre-emit critique: P5 H4 E4 S5 R4 V4
+/* Hallmark · genre: editorial · theme: Lumen (Night Foundry) · macrostructure: Marquee Hero
+ * design-system: design.md · designed-as-app · anchor: base44 navy/cream/gold
+ * DNA source: usehallmark.com Lumen example (structure) · base44 (content + colour)
+ * pre-emit critique: P5 H4 E5 S5 R4 V5
  */
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ *
- * Limenako — Garden (Hallmark)
- * Botanical editorial · oat-cream paper · leaf-green + clay accents
+ * Limenako — Lumen Night Foundry, tuned to base44 navy/cream/gold
+ * Two-register type: lowercase classical serif prose · UPPERCASE mono labels
  * ------------------------------------------------------------------ */
 
 :root {
-  --paper: oklch(95.5% 0.022 92);
-  --paper-2: oklch(92.5% 0.026 92);
-  --paper-3: oklch(88.5% 0.03 90);
-  --rule: oklch(83% 0.028 115);
-  --ink: oklch(24% 0.052 152);
-  --ink-soft: oklch(40% 0.045 142);
-  --leaf: oklch(47% 0.13 140);
-  --leaf-deep: oklch(33% 0.05 150);
-  --clay: oklch(54% 0.14 46);
-  --clay-bright: oklch(60% 0.15 46);
-  --sand: oklch(80% 0.09 85);
-  --focus: oklch(47% 0.13 140);
+  --paper: oklch(17% 0.03 258);       /* deep navy canvas */
+  --paper-2: oklch(21% 0.035 258);    /* base44 navy — cards/bands */
+  --paper-3: oklch(25% 0.04 258);     /* hover */
+  --ink: oklch(97% 0.01 92);          /* near-white cream headlines */
+  --ink-2: oklch(88% 0.012 92);       /* cream body */
+  --muted: oklch(70% 0.02 92);        /* captions */
+  --rule: oklch(97% 0.01 92 / 0.16);  /* hairline */
+  --rule-2: oklch(97% 0.01 92 / 0.3);
+  --rule-blueprint: oklch(97% 0.01 92 / 0.05);
+  --accent: oklch(78% 0.12 90);       /* gold #D4AF37 — brass accent */
+  --accent-soft: oklch(85% 0.09 92);  /* soft gold */
+  --glow: oklch(80% 0.13 90 / 0.35);
+  --paper-emit: oklch(78% 0.12 90 / 0.045);
+  --focus: oklch(78% 0.12 90);
 
-  --tint-moss: oklch(47% 0.13 140 / 0.1);
-  --tint-clay: oklch(54% 0.14 46 / 0.1);
-
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-pulse: 4s;
 }
 
 @theme inline {
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
   --color-paper-3: var(--paper-3);
-  --color-rule: var(--rule);
   --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
-  --color-leaf: var(--leaf);
-  --color-leaf-deep: var(--leaf-deep);
-  --color-clay: var(--clay);
-  --color-clay-bright: var(--clay-bright);
-  /* terra* kept as aliases of clay so existing utility classes carry the brand's warm pop */
-  --color-terra: var(--clay);
-  --color-terra-bright: var(--clay-bright);
-  --color-sand: var(--sand);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-rule-2: var(--rule-2);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
 
-  --font-display: var(--font-young-serif), ui-serif, Georgia, serif;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
-  --font-body: var(--font-hanken), system-ui, sans-serif;
+  --font-display: var(--font-instrument), "Tiempos Headline", ui-serif, Georgia, serif;
+  --font-body: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Accessible focus ring — box-shadow so it survives `outline-none` utilities.
- * (ui-ux-pro-max: focus-states / never-remove-outline, Critical) */
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--font-body);
+  font-variant-numeric: tabular-nums;
+  text-transform: lowercase; /* Lumen two-register foundation */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Mono labels are the ONLY uppercase surface */
+.eyebrow,
+.label,
+.callout,
+.meter__label,
+.stat__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.55;
+}
+
+/* Instrument Serif display — lowercase, upright, no italic ever */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  text-transform: lowercase;
+}
+
+/* Verb landmark — one gold word + draw-in underline (not italic) */
+.verb {
+  color: var(--accent);
+  position: relative;
+  white-space: nowrap;
+  font-style: normal;
+}
+.verb::after {
+  content: "";
+  position: absolute;
+  left: 0.04em;
+  right: 0.04em;
+  bottom: 0.04em;
+  height: 1px;
+  background: var(--accent);
+  transform-origin: left;
+  animation: draw-underline 340ms var(--ease-soft) 820ms backwards;
+}
+@keyframes draw-underline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Blueprint grid — the "engineered, not vibed" ground */
+.blueprint {
+  background-image:
+    linear-gradient(var(--rule-blueprint) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule-blueprint) 1px, transparent 1px),
+    radial-gradient(60% 50% at 78% 28%, var(--paper-emit) 0%, transparent 65%);
+  background-size: 48px 48px, 48px 48px, 100% 100%;
+}
+
+/* Hairline card lit from within */
+.card-lit {
+  border: 1px solid var(--rule);
+  background:
+    radial-gradient(120% 80% at 50% 0%, oklch(78% 0.12 90 / 0.05) 0%, transparent 60%),
+    var(--paper);
+  transition: transform 220ms var(--ease-soft), border-color 220ms var(--ease-soft),
+    background 220ms var(--ease-soft);
+}
+.card-lit:hover {
+  transform: translateY(-4px);
+  border-color: var(--rule-2);
+  background:
+    radial-gradient(120% 80% at 50% 0%, oklch(78% 0.12 90 / 0.11) 0%, transparent 60%),
+    var(--paper);
+}
+
+/* Botanical specimen apparatus (Lumen: a built object, never an orb) */
+.chamber {
+  position: relative;
+  width: clamp(180px, 22vw, 260px);
+  aspect-ratio: 0.56;
+  border: 1px solid var(--rule-2);
+  border-radius: 999px;
+  background: oklch(20% 0.03 258 / 0.8);
+  overflow: hidden;
+}
+.chamber__electrode {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--y);
+  height: 1px;
+  background: var(--rule);
+}
+.apparatus__filament {
+  position: absolute;
+  top: 9%;
+  bottom: 9%;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(
+    to bottom,
+    oklch(96% 0.05 92) 0%,
+    oklch(80% 0.13 90) 50%,
+    oklch(96% 0.05 92) 100%
+  );
+  box-shadow: 0 0 16px 4px var(--glow), 0 0 48px 12px oklch(80% 0.13 90 / 0.2);
+  animation: filament-pulse var(--dur-pulse) ease-in-out infinite;
+}
+.apparatus__leaf {
+  position: absolute;
+  left: 50%;
+  top: var(--y);
+  width: 26px;
+  height: 8px;
+  margin-left: var(--mx, 0);
+  border-radius: 0 100% 0 100% / 0 100% 0 100%;
+  background: oklch(80% 0.12 90 / 0.55);
+  transform: rotate(var(--rot, 0deg));
+  transform-origin: left center;
+}
+.chamber__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, var(--glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+@keyframes filament-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+.callout__line {
+  height: 1px;
+  background: var(--rule-2);
+}
+
+/* Meter strip ticks */
+.meter__bars {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 26px;
+}
+.meter__bars > span {
+  flex: 1;
+  min-width: 1px;
+  background: var(--accent);
+  border-radius: 0.5px;
+}
+
+/* Accessible focus ring (survives outline-none) */
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {
   outline: none;
-  box-shadow:
-    0 0 0 2px var(--paper),
-    0 0 0 4px var(--focus);
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--focus);
   border-radius: 4px;
 }
 
-/* Clickable affordance (ui-ux-pro-max: cursor-pointer) */
 button:not(:disabled),
 [role="button"],
 label[for] {
@@ -74,113 +224,36 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Skip link — visible only on keyboard focus */
 .skip-link {
   position: fixed;
   top: 0.75rem;
   left: 0.75rem;
   z-index: 200;
   transform: translateY(-160%);
-  transition: transform 160ms var(--ease-out);
-  background: var(--ink);
+  transition: transform 160ms var(--ease-soft);
+  background: var(--accent);
   color: var(--paper);
   padding: 0.75rem 1.25rem;
   border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
 }
 .skip-link:focus-visible {
   transform: translateY(0);
 }
 
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-/* Fine botanical grain for tactile, printed-almanac warmth */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.35;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-}
-
-/* Utilities ---------------------------------------------------------- */
-.tracking-mega {
-  letter-spacing: 0.32em;
-}
-.tracking-wide-sm {
-  letter-spacing: 0.14em;
-}
-.tracking-label {
-  letter-spacing: 0.14em;
-}
-
-/* Herbarium specimen tag */
-.specimen-tag {
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-}
-
-/* Young Serif display face (roman — no italic headers, Hallmark gate 38a) */
-.display-tight {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: -0.006em;
-}
-
-/* Botanical section tints */
-.tint-moss {
-  background: var(--tint-moss);
-}
-.tint-clay {
-  background: var(--tint-clay);
-}
-
-/* Marquee ------------------------------------------------------------ */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-.animate-marquee-slow {
-  animation: marquee 48s linear infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .animate-marquee,
-  .animate-marquee-slow {
-    animation: none;
-  }
+  html { scroll-behavior: auto; }
+  .verb::after { animation: none; }
+  .apparatus__filament { animation: none !important; }
 }
 
-/* Stripe PaymentElement on cream */
+/* Stripe PaymentElement on the dark canvas */
 .stripe-shell {
-  background: var(--paper-3);
-  border: 1px solid color-mix(in oklch, var(--ink) 12%, transparent);
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
   border-radius: 10px;
   padding: 1.25rem;
 }

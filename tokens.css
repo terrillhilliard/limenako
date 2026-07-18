@@ -1,45 +1,32 @@
-/* Hallmark · Limenako · theme: Garden (editorial)
- * Portable token export. The app's runtime tokens live in src/app/globals.css;
- * this file is the drop-in copy for reusing the system elsewhere. See design.md.
+/* Hallmark · Limenako · theme: Lumen (Night Foundry) · base44 navy/cream/gold
+ * Portable token export. Runtime tokens live in src/app/globals.css. See design.md.
  */
 :root {
-  --color-paper: oklch(95.5% 0.022 92);
-  --color-paper-2: oklch(92.5% 0.026 92);
-  --color-paper-3: oklch(88.5% 0.03 90);
-  --color-rule: oklch(83% 0.028 115);
-  --color-ink: oklch(24% 0.052 152);
-  --color-ink-soft: oklch(40% 0.045 142);
-  --color-leaf: oklch(47% 0.13 140);
-  --color-leaf-deep: oklch(33% 0.05 150);
-  --color-clay: oklch(54% 0.14 46);
-  --color-clay-bright: oklch(60% 0.15 46);
-  --color-sand: oklch(80% 0.09 85);
-  --color-focus: oklch(47% 0.13 140);
+  --color-paper: oklch(17% 0.03 258);
+  --color-paper-2: oklch(21% 0.035 258);
+  --color-paper-3: oklch(25% 0.04 258);
+  --color-ink: oklch(97% 0.01 92);
+  --color-ink-2: oklch(88% 0.012 92);
+  --color-muted: oklch(70% 0.02 92);
+  --color-rule: oklch(97% 0.01 92 / 0.16);
+  --color-accent: oklch(78% 0.12 90);
+  --color-accent-soft: oklch(85% 0.09 92);
+  --color-focus: oklch(78% 0.12 90);
 
-  --font-display: "Young Serif", ui-serif, Georgia, serif;
-  --font-serif: "Newsreader", ui-serif, Georgia, serif;
-  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --font-display: "Instrument Serif", "Tiempos Headline", ui-serif, Georgia, serif;
+  --font-body: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --space-3xs: 0.25rem;
-  --space-2xs: 0.5rem;
-  --space-xs: 0.75rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --space-2xl: 4.5rem;
-  --space-3xl: 7rem;
+  --space-3xs: 0.25rem;  --space-2xs: 0.5rem;  --space-xs: 0.75rem;
+  --space-sm: 1rem;      --space-md: 1.5rem;   --space-lg: 2rem;
+  --space-xl: 3rem;      --space-2xl: 4.5rem;  --space-3xl: 7rem;
 
-  --text-display: clamp(2.85rem, 5.2vw + 1rem, 5rem);
-  --text-display-s: clamp(2.1rem, 3.2vw + 1rem, 3.25rem);
+  --text-display: clamp(2.6rem, 5.4vw + 1rem, 5.25rem);
+  --text-display-s: clamp(2rem, 3vw + 1rem, 3.25rem);
 
-  --tracking-display: -0.006em;
-  --tracking-label: 0.14em;
-
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-short: 220ms;
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-pulse: 4s;
 
   --radius-card: 10px;
-  --radius-pill: 8px;
-  --radius-input: 8px;
+  --radius-pill: 999px;
 }

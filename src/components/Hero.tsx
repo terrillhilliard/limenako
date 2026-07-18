@@ -1,109 +1,117 @@
 "use client";
 
 import { motion } from "motion/react";
-import Marquee from "./Marquee";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
+// leader-line callouts carry real brand facts (Lumen: never blank / invented)
+const CALLOUTS = [
+  { side: "left", y: "16%", text: "100% natural" },
+  { side: "right", y: "34%", text: "cold-processed" },
+  { side: "left", y: "60%", text: "lemongrass" },
+  { side: "right", y: "80%", text: "no artificial" },
+];
+
 export default function Hero() {
   return (
-    <section id="top" className="relative min-h-screen overflow-hidden bg-paper pt-20">
-      {/* Geometric split blocks */}
-      <div aria-hidden className="absolute inset-0">
-        <motion.div
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ duration: 1.1, ease }}
-          style={{ transformOrigin: "top" }}
-          className="absolute right-0 top-0 h-full w-[38%] bg-leaf"
-        />
-        <motion.div
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ duration: 1.1, delay: 0.12, ease }}
-          style={{ transformOrigin: "bottom" }}
-          className="absolute bottom-0 left-0 h-[42%] w-[46%] bg-terra"
-        />
-        <div className="absolute right-[38%] top-1/3 hidden h-40 w-40 -translate-x-1/2 rounded-full border border-terra/40 md:block" />
-        <div className="absolute left-[8%] top-[22%] hidden h-24 w-24 border border-leaf/30 md:block" style={{ transform: "rotate(45deg)" }} />
-      </div>
-
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-[1400px] flex-col justify-center px-5 md:px-10">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35, ease }}
-          className="mb-6 text-[11px] font-semibold uppercase tracking-mega text-ink-soft"
-        >
-          Ho Chi Minh City &nbsp;✳&nbsp; Southern Africa
-        </motion.p>
-
-        <h1 className="display-tight text-ink">
-          <motion.span
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.45, ease }}
-            className="block text-[19vw] leading-[0.82] md:text-[13vw]"
-          >
-            Simply
-          </motion.span>
-          <motion.span
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.58, ease }}
-            className="block pl-[12vw] text-[19vw] leading-[0.82] md:pl-[22vw] md:text-[13vw]"
-          >
-            <span className="text-terra">Sacred</span>
-          </motion.span>
-        </h1>
-
-        <div className="mt-10 flex flex-col gap-8 md:mt-14 md:flex-row md:items-end md:justify-between">
+    <section id="top" className="blueprint relative overflow-clip pt-16">
+      <div className="mx-auto grid min-h-[calc(100vh-4rem)] max-w-[1320px] grid-cols-1 items-center gap-16 px-5 py-20 md:grid-cols-[1.1fr_0.9fr] md:px-8">
+        {/* Left — headline */}
+        <div>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.75, ease }}
-            className="max-w-md text-base leading-relaxed text-ink-soft md:text-lg"
+            transition={{ duration: 0.6, delay: 0.2, ease }}
+            className="eyebrow mb-7"
           >
-            Reclaim your glow through rituals rooted in ancestry — crafted for
-            your skin, your home, and your soul. Family Ka Moka, connecting
-            cultures.
+            00 · simply sacred
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.32, ease }}
+            className="display max-w-[15ch] text-[clamp(2.6rem,5.4vw+1rem,5.25rem)] text-ink"
+          >
+            <span className="verb">reclaim</span>&nbsp;your glow, rooted in ancestry.
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5, ease }}
+            className="mt-8 max-w-md text-[15px] leading-relaxed text-ink-2/70"
+          >
+            sacred botanical skincare, crafted for your skin, your home, and
+            your soul. family ka moka — connecting cultures between ho chi minh
+            city and southern africa.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.88, ease }}
-            className="flex flex-wrap gap-3"
+            transition={{ duration: 0.7, delay: 0.62, ease }}
+            className="mt-10 flex flex-wrap gap-3"
           >
             <a
               href="#products"
-              className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-[13px] text-paper transition-opacity hover:opacity-90"
             >
-              Shop the Collection
+              shop the collection
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#ritual"
-              className="inline-flex items-center rounded-full border border-ink/25 px-7 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper"
+              className="inline-flex items-center rounded-full border border-rule-2 px-6 py-3 text-[13px] text-ink-2 transition-colors hover:border-accent hover:text-accent"
             >
-              The Ritual
+              the ritual
             </a>
           </motion.div>
         </div>
-      </div>
 
-      {/* Marquee band anchored to the bottom */}
-      <div className="absolute inset-x-0 bottom-0 z-10 border-y border-ink/15 bg-paper/60 py-3 text-[11px] font-semibold uppercase tracking-wide-sm text-ink backdrop-blur-sm">
-        <Marquee
-          items={[
-            "Simply Sacred",
-            "100% Natural",
-            "Cold-Processed",
-            "Family Ka Moka",
-            "Acne-Free Glow",
-            "Connecting Cultures",
-          ]}
-        />
+        {/* Right — botanical specimen apparatus */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.55, ease }}
+          className="relative mx-auto"
+          aria-hidden
+        >
+          <figure className="relative">
+            <div className="chamber">
+              <span className="chamber__electrode" style={{ ["--y" as string]: "22%" }} />
+              <span className="chamber__electrode" style={{ ["--y" as string]: "44%" }} />
+              <span className="chamber__electrode" style={{ ["--y" as string]: "66%" }} />
+              <span className="chamber__electrode" style={{ ["--y" as string]: "84%" }} />
+              <span className="apparatus__filament" />
+              <span className="apparatus__leaf" style={{ ["--y" as string]: "30%", ["--rot" as string]: "-28deg" }} />
+              <span className="apparatus__leaf" style={{ ["--y" as string]: "46%", ["--rot" as string]: "26deg", ["--mx" as string]: "-26px", transform: "rotate(26deg) scaleX(-1)" }} />
+              <span className="apparatus__leaf" style={{ ["--y" as string]: "62%", ["--rot" as string]: "-22deg" }} />
+              <span className="chamber__glow" />
+              <span className="absolute bottom-3 left-1/2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-[0.14em] text-ink/40">
+                lmk-01
+              </span>
+            </div>
+
+            {/* leader-line callouts */}
+            <ul className="absolute inset-0">
+              {CALLOUTS.map((c) => (
+                <li
+                  key={c.text}
+                  className="absolute flex items-center gap-2"
+                  style={{
+                    top: c.y,
+                    [c.side === "left" ? "right" : "left"]: "100%",
+                    flexDirection: c.side === "left" ? "row" : "row-reverse",
+                  }}
+                >
+                  <span className="callout__line w-8 md:w-12" />
+                  <span className="callout whitespace-nowrap opacity-70">{c.text}</span>
+                </li>
+              ))}
+            </ul>
+          </figure>
+        </motion.div>
       </div>
     </section>
   );

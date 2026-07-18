@@ -49,13 +49,13 @@ export default function CheckoutClient() {
   if (lines.length === 0) {
     return (
       <div className="mx-auto max-w-lg px-6 py-40 text-center">
-        <p className="display-tight text-5xl uppercase text-ink">Empty</p>
-        <p className="mt-4 font-serif text-xl text-ink-soft">Your cart is empty.</p>
+        <p className="display text-5xl text-ink">empty.</p>
+        <p className="mt-4 text-[15px] text-ink-2/70">your cart is empty.</p>
         <Link
           href="/#products"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-[12px] text-paper transition-opacity hover:opacity-90"
         >
-          Browse Products →
+          browse products →
         </Link>
       </div>
     );
@@ -64,20 +64,20 @@ export default function CheckoutClient() {
   return (
     <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-16 px-5 pb-28 pt-36 md:grid-cols-2 md:px-10">
       <div>
-        <p className="mb-4 text-[11px] font-semibold uppercase tracking-mega text-terra">Checkout</p>
-        <h1 className="display-tight text-5xl text-ink md:text-6xl">
-          Your <span className="text-leaf">order</span>
+        <p className="eyebrow mb-5">00 · Checkout</p>
+        <h1 className="display text-5xl text-ink md:text-6xl">
+          Your <span className="verb">order</span>.
         </h1>
 
-        <ul className="mt-10 divide-y divide-ink/10 border-y border-ink/15">
+        <ul className="mt-10 divide-y divide-rule border-y border-rule">
           {lines.map(({ product, quantity }) => (
             <li key={product.id} className="flex items-center gap-4 py-5">
-              <div aria-hidden className="h-16 w-14 shrink-0 rounded-sm" style={{ background: product.gradient }} />
+              <div aria-hidden className="h-16 w-14 shrink-0 rounded-[6px]" style={{ background: product.gradient }} />
               <div className="flex-1">
-                <p className="font-serif text-lg text-ink">{product.name}</p>
-                <p className="text-[11px] uppercase tracking-wide-sm text-ink-soft">Qty {quantity}</p>
+                <p className="display text-lg text-ink">{product.name}</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink-2/50">qty {quantity}</p>
               </div>
-              <span className="display-tight text-lg text-ink">
+              <span className="display text-lg text-ink">
                 {formatPrice(product.priceCents * quantity)}
               </span>
             </li>
@@ -85,8 +85,8 @@ export default function CheckoutClient() {
         </ul>
 
         <div className="mt-6 flex items-baseline justify-between">
-          <span className="text-[11px] font-semibold uppercase tracking-wide-sm text-ink-soft">Total</span>
-          <span className="display-tight text-3xl text-terra">{formatPrice(subtotalCents)}</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink-2/60">total</span>
+          <span className="display text-3xl text-accent">{formatPrice(subtotalCents)}</span>
         </div>
       </div>
 
@@ -94,7 +94,7 @@ export default function CheckoutClient() {
         {stage === "details" && (
           <form onSubmit={handleContinue} className="space-y-6">
             <div>
-              <label htmlFor="checkout-email" className="mb-2 block text-[10px] font-semibold uppercase tracking-wide-sm text-ink-soft">
+              <label htmlFor="checkout-email" className="mb-2 block font-mono text-[10px] uppercase tracking-[0.1em] text-ink-2/50">
                 Email Address *
               </label>
               <input
@@ -104,16 +104,16 @@ export default function CheckoutClient() {
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border-0 border-b border-ink/25 bg-transparent px-0 py-3 text-sm text-ink outline-none transition-colors focus:border-terra"
+                className="w-full border-0 border-b border-rule bg-transparent px-0 py-3 text-[14px] text-ink outline-none transition-colors focus:border-accent"
               />
             </div>
-            {error && <p className="text-xs text-terra">{error}</p>}
+            {error && <p className="text-[12px] text-accent">{error}</p>}
             <button
               type="submit"
               disabled={loading}
-              className="group inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra disabled:opacity-60"
+              className="group inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-[12px] text-paper transition-opacity hover:opacity-90 disabled:opacity-60"
             >
-              {loading ? "Loading…" : "Continue to Payment"}
+              {loading ? "loading…" : "continue to payment"}
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </button>
           </form>
@@ -121,7 +121,21 @@ export default function CheckoutClient() {
 
         {stage === "payment" && clientSecret && (
           <div className="stripe-shell">
-            <Elements stripe={getStripe()} options={{ clientSecret, appearance: { theme: "flat" } }}>
+            <Elements
+              stripe={getStripe()}
+              options={{
+                clientSecret,
+                appearance: {
+                  theme: "night",
+                  variables: {
+                    colorPrimary: "#d4af37",
+                    colorBackground: "#1a2b42",
+                    fontFamily: "Geist, system-ui, sans-serif",
+                    borderRadius: "8px",
+                  },
+                },
+              }}
+            >
               <CheckoutForm />
             </Elements>
           </div>

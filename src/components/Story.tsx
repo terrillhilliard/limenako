@@ -1,52 +1,55 @@
 import Reveal from "./Reveal";
 
+const STATS = [
+  { value: "100%", label: "natural" },
+  { value: "4", label: "sacred steps" },
+  { value: "2", label: "origins" },
+];
+
 export default function Story() {
   return (
-    <section id="story" className="relative overflow-hidden bg-paper py-24 md:py-36">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-5 md:grid-cols-12 md:px-10">
-        {/* Oversized index number, grid-breaking */}
-        <Reveal className="md:col-span-4" y={40}>
-          <div className="relative">
-            <span className="display-tight block text-[28vw] leading-none text-terra/15 md:text-[16rem]">
-              01
-            </span>
-            <span className="absolute left-2 top-4 text-[11px] font-semibold uppercase tracking-mega text-ink-soft">
-              The Ritual
-            </span>
-          </div>
-        </Reveal>
-
-        <div className="flex flex-col justify-center md:col-span-8 md:pl-12">
-          <Reveal delay={0.05}>
-            <h2 className="display-tight text-5xl text-ink md:text-7xl">
-              You,
-              <span className="text-terra"> reclaimed.</span>
+    <section id="story" className="relative overflow-hidden py-24 md:py-32">
+      <div className="mx-auto max-w-[1320px] px-5 md:px-8">
+        <div className="grid grid-cols-1 gap-14 md:grid-cols-[0.9fr_1.1fr]">
+          <Reveal>
+            <p className="eyebrow mb-6">01 · The Ritual</p>
+            <h2 className="display max-w-[12ch] text-[clamp(2rem,3vw+1rem,3.25rem)] text-ink">
+              You, <span className="verb">reclaimed</span>.
             </h2>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
-              Limenako is more than skincare — it is a return to self. Our
-              formulations honour ancestral wisdom passed through generations,
-              blending sacred botanicals with modern ritual to create moments of
-              healing and renewal.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.18}>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
-              Each product is a pre-emptive pause. A reminder to slow down, to
-              nourish, to honour the skin you&rsquo;re in. Because self-care is
-              not indulgence — it is inheritance.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.24}>
-            <p className="mt-10 font-serif text-2xl italic text-leaf">
-              &ldquo;Respect your ritual.&rdquo;
-            </p>
-          </Reveal>
+          <div className="flex flex-col justify-center">
+            <Reveal delay={0.08}>
+              <p className="max-w-xl text-[15px] leading-relaxed text-ink-2/75">
+                Limenako is more than skincare — it is a return to self. Our
+                formulations honour ancestral wisdom passed through generations,
+                blending sacred botanicals with modern ritual to create moments
+                of healing and renewal.
+              </p>
+            </Reveal>
+            <Reveal delay={0.14}>
+              <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-ink-2/75">
+                Each product is a pre-emptive pause. A reminder to slow down, to
+                nourish, to honour the skin you are in. Because self-care is not
+                indulgence — it is inheritance.
+              </p>
+            </Reveal>
+          </div>
         </div>
+
+        {/* three-stat row — Instrument Serif numerals, tabular-nums */}
+        <Reveal delay={0.1}>
+          <div className="mt-20 grid grid-cols-3 border-t border-rule">
+            {STATS.map((stat) => (
+              <div key={stat.label} className="border-r border-rule px-4 py-8 last:border-r-0">
+                <p className="display text-[clamp(2.5rem,4vw+1rem,4.25rem)] text-ink">
+                  {stat.value}
+                </p>
+                <p className="stat__label mt-2">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

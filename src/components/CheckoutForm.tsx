@@ -30,13 +30,13 @@ export default function CheckoutForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <PaymentElement />
-      {error && <p className="text-sm text-terra">{error}</p>}
+      {error && <p className="text-[13px] text-accent">{error}</p>}
       <button
         type="submit"
         disabled={!stripe || submitting}
-        className="group flex w-full items-center justify-center gap-3 rounded-full bg-ink px-8 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra disabled:opacity-60"
+        className="group flex w-full items-center justify-center gap-3 rounded-full bg-accent px-8 py-4 text-[12px] text-paper transition-opacity hover:opacity-90 disabled:opacity-60"
       >
-        {submitting ? "Processing…" : "Pay Now"}
+        {submitting ? "processing…" : "pay now"}
         <span className="transition-transform group-hover:translate-x-1">→</span>
       </button>
     </form>

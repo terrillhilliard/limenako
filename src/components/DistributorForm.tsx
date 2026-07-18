@@ -26,9 +26,9 @@ const CHANNELS = [
 ];
 
 const labelClass =
-  "mb-2 block text-[10px] font-semibold uppercase tracking-wide-sm text-paper/50";
+  "mb-2 block font-mono text-[10px] uppercase tracking-[0.1em] text-ink/50";
 const fieldClass =
-  "w-full border-0 border-b border-paper/25 bg-transparent px-0 py-3 text-sm text-paper outline-none transition-colors placeholder:text-paper/30 focus:border-terra-bright [&>option]:text-ink";
+  "w-full border-0 border-b border-rule bg-transparent px-0 py-3 text-[14px] text-ink outline-none transition-colors placeholder:text-ink-2/30 focus:border-accent [&>option]:bg-paper-2 [&>option]:text-ink";
 
 export default function DistributorForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -72,9 +72,9 @@ export default function DistributorForm() {
 
   if (status === "success") {
     return (
-      <div className="border border-paper/20 bg-paper/5 p-12 text-center">
-        <p className="font-serif text-3xl text-sand">Inquiry received.</p>
-        <p className="mt-3 text-sm text-paper/60">We respond within 3–5 business days.</p>
+      <div className="card-lit rounded-[10px] p-12 text-center">
+        <p className="display text-3xl text-accent">inquiry received.</p>
+        <p className="mt-3 text-[13px] text-ink-2/60">we respond within 3–5 business days.</p>
       </div>
     );
   }
@@ -127,13 +127,13 @@ export default function DistributorForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="group inline-flex items-center gap-3 rounded-full bg-terra px-8 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra-bright disabled:opacity-60"
+          className="group inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-[12px] text-paper transition-opacity hover:opacity-90 disabled:opacity-60"
         >
-          {status === "loading" ? "Submitting…" : "Submit Inquiry"}
+          {status === "loading" ? "submitting…" : "submit inquiry"}
           <span className="transition-transform group-hover:translate-x-1">→</span>
         </button>
-        {status === "error" && <p className="mt-4 text-xs text-terra-bright">{error}</p>}
-        <p className="mt-4 text-[11px] uppercase tracking-wide-sm text-paper/40">
+        {status === "error" && <p className="mt-4 text-[12px] text-accent">{error}</p>}
+        <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.1em] text-ink-2/40">
           We respond within 3–5 business days.
         </p>
       </div>

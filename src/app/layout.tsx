@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
-import { Young_Serif, Newsreader, Hanken_Grotesk } from "next/font/google";
+import { Instrument_Serif, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import CartDrawer from "@/components/CartDrawer";
 import MotionProvider from "@/components/MotionProvider";
 
-const youngSerif = Young_Serif({
-  variable: "--font-young-serif",
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
   subsets: ["latin"],
   weight: "400",
 });
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-  style: ["normal", "italic"],
 });
 
-const hanken = Hanken_Grotesk({
-  variable: "--font-hanken",
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -36,9 +36,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${youngSerif.variable} ${newsreader.variable} ${hanken.variable}`}
+      className={`${instrument.variable} ${geist.variable} ${jetbrains.variable}`}
     >
-      <body className="min-h-screen bg-paper text-ink">
+      <body className="min-h-screen bg-paper text-ink-2">
         <a href="#main" className="skip-link">
           Skip to content
         </a>

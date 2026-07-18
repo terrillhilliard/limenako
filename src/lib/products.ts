@@ -17,7 +17,7 @@ export const PRODUCTS: Product[] = [
     description:
       "100% natural, handmade cold-processed soap with lemongrass and botanical extracts. No artificial ingredients.",
     priceCents: 2500,
-    gradient: "linear-gradient(150deg,#3f7a4e,#7d9068 52%,#d8bf8a)",
+    gradient: "linear-gradient(150deg,#1a2b42,#33455f 55%,#d4af37)",
   },
   {
     id: "daily-cleanser",
@@ -27,7 +27,7 @@ export const PRODUCTS: Product[] = [
     description:
       "A gentle, nourishing cleanser crafted with ancestral botanical wisdom. Designed for your daily ritual of renewal.",
     priceCents: 3500,
-    gradient: "linear-gradient(150deg,#2b4a3a,#5a7a56 52%,#d8bf8a)",
+    gradient: "linear-gradient(150deg,#131f30,#26405f 55%,#d9bd85)",
   },
   {
     id: "heritage-collection",
@@ -37,7 +37,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Our signature collection honouring the Kamoka lineage. Matte navy with gold foil, connecting cultures through sacred care.",
     priceCents: 7500,
-    gradient: "linear-gradient(150deg,#b0663f,#8a4a30 52%,#2b4a3a)",
+    gradient: "linear-gradient(150deg,#1a2b42,#0f1826 55%,#d4af37)",
   },
 ];
 

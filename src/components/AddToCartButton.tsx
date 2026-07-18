@@ -13,15 +13,17 @@ export default function AddToCartButton({ productId }: { productId: string }) {
       onClick={() => {
         addItem(productId);
         setPulse(true);
-        window.setTimeout(() => setPulse(false), 500);
+        window.setTimeout(() => setPulse(false), 600);
       }}
-      className={`group/btn inline-flex items-center gap-2 rounded-full border border-ink px-5 py-2.5 text-[11px] font-semibold uppercase tracking-wide-sm transition-colors ${
-        pulse ? "bg-terra border-terra text-paper" : "bg-transparent text-ink hover:bg-ink hover:text-paper"
+      className={`group/btn inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-[12px] transition-colors ${
+        pulse
+          ? "border-accent bg-accent text-paper"
+          : "border-rule-2 text-ink-2 hover:border-accent hover:text-accent"
       }`}
     >
-      {pulse ? "Added" : "Add"}
-      <span aria-hidden className="transition-transform group-hover/btn:rotate-90">
-        +
+      {pulse ? "added" : "add to cart"}
+      <span aria-hidden className="transition-transform group-hover/btn:translate-x-0.5">
+        →
       </span>
     </button>
   );

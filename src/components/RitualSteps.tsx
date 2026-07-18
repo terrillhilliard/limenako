@@ -1,5 +1,4 @@
 import Reveal from "./Reveal";
-import Marquee from "./Marquee";
 
 const STEPS = [
   { number: "01", title: "Cleanse", description: "Begin with intention. Let the lemongrass purify your skin and spirit." },
@@ -10,35 +9,22 @@ const STEPS = [
 
 export default function RitualSteps() {
   return (
-    <section id="ritual" className="relative overflow-hidden bg-leaf text-paper">
-      <div className="border-b border-paper/15 py-3 text-[11px] font-semibold uppercase tracking-wide-sm text-sand">
-        <Marquee
-          slow
-          items={["Cleanse", "Nourish", "Honour", "Glow", "A pre-emptive pause", "Your daily practice"]}
-        />
-      </div>
-
-      <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
+    <section id="ritual" className="relative overflow-hidden py-24 md:py-32">
+      <div className="mx-auto max-w-[1320px] px-5 md:px-8">
         <Reveal>
-          <div className="mb-16 max-w-2xl">
-            <p className="mb-4 text-[11px] font-semibold uppercase tracking-mega text-sand">
-              Your Daily Practice
-            </p>
-            <h2 className="display-tight text-5xl md:text-7xl">
-              The <span className="text-sand">Ritual</span>
-            </h2>
-          </div>
+          <p className="eyebrow mb-6">02 · Daily Practice</p>
+          <h2 className="display max-w-[16ch] text-[clamp(2rem,3vw+1rem,3.25rem)] text-ink">
+            The ritual — a pre-emptive <span className="verb">pause</span>.
+          </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-sm bg-paper/15 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (
-            <Reveal key={step.number} delay={i * 0.08} className="group bg-leaf">
-              <div className="flex h-full flex-col p-8 transition-colors duration-300 group-hover:bg-terra">
-                <span className="display-tight text-6xl text-sand transition-colors duration-300 group-hover:text-paper md:text-7xl">
-                  {step.number}
-                </span>
-                <h3 className="mt-8 font-serif text-2xl">{step.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-paper/70 transition-colors duration-300 group-hover:text-paper/90">
+            <Reveal key={step.number} delay={i * 0.08}>
+              <div className="card-lit flex h-full flex-col rounded-[10px] p-7">
+                <p className="stat__label text-accent/80">{step.number}</p>
+                <h3 className="display mt-6 text-2xl text-ink">{step.title}</h3>
+                <p className="mt-3 text-[13px] leading-relaxed text-ink-2/65">
                   {step.description}
                 </p>
               </div>

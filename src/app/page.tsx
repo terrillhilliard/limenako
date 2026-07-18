@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import Meter from "@/components/Meter";
 import Story from "@/components/Story";
 import RitualSteps from "@/components/RitualSteps";
 import Products from "@/components/Products";
@@ -14,6 +15,7 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
+        <Meter />
         <Story />
         <RitualSteps />
         <Products />
