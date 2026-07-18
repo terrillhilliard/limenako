@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import CartButton from "./CartButton";
 
 const LINKS = [
   { label: "Rituals", href: "#ritual" },
@@ -30,16 +31,19 @@ export default function Nav() {
           ))}
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle navigation"
-          className="md:hidden flex flex-col gap-1.5 p-2"
-        >
-          <span className="w-6 h-px bg-navy" />
-          <span className="w-6 h-px bg-navy" />
-          <span className="w-6 h-px bg-navy" />
-        </button>
+        <div className="flex items-center gap-6">
+          <CartButton />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle navigation"
+            className="md:hidden flex flex-col gap-1.5 p-2"
+          >
+            <span className="w-6 h-px bg-navy" />
+            <span className="w-6 h-px bg-navy" />
+            <span className="w-6 h-px bg-navy" />
+          </button>
+        </div>
       </div>
 
       {open && (

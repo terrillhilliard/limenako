@@ -1,20 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useCart } from "@/lib/cart-context";
 
-export default function AddToCartButton({ productName }: { productName: string }) {
-  const [added, setAdded] = useState(false);
+export default function AddToCartButton({ productId }: { productId: string }) {
+  const { addItem } = useCart();
 
   return (
     <button
       type="button"
-      onClick={() => {
-        setAdded(true);
-        window.setTimeout(() => setAdded(false), 1800);
-      }}
+      onClick={() => addItem(productId)}
       className="rounded-full bg-navy px-5 py-2 text-[11px] font-semibold uppercase tracking-widest-xl text-cream transition-colors hover:bg-gold hover:text-navy-deep"
     >
-      {added ? `${productName} added` : "Add to cart"}
+      Add to cart
     </button>
   );
 }
