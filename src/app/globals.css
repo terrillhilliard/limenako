@@ -54,6 +54,47 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Accessible focus ring — box-shadow so it survives `outline-none` utilities.
+ * (ui-ux-pro-max: focus-states / never-remove-outline, Critical) */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--paper),
+    0 0 0 4px var(--focus);
+  border-radius: 4px;
+}
+
+/* Clickable affordance (ui-ux-pro-max: cursor-pointer) */
+button:not(:disabled),
+[role="button"],
+label[for] {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Skip link — visible only on keyboard focus */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  transform: translateY(-160%);
+  transition: transform 160ms var(--ease-out);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 body {
   background: var(--paper);
   color: var(--ink);

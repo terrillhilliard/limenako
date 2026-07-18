@@ -76,7 +76,7 @@ export default function CartDrawer() {
                             type="button"
                             onClick={() => setQuantity(product.id, quantity - 1)}
                             aria-label={`Decrease ${product.name} quantity`}
-                            className="flex h-7 w-7 items-center justify-center rounded-full border border-ink/25 text-sm transition-colors hover:border-terra hover:text-terra"
+                            className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/25 text-base transition-colors hover:border-terra hover:text-terra"
                           >
                             −
                           </button>
@@ -85,7 +85,7 @@ export default function CartDrawer() {
                             type="button"
                             onClick={() => setQuantity(product.id, quantity + 1)}
                             aria-label={`Increase ${product.name} quantity`}
-                            className="flex h-7 w-7 items-center justify-center rounded-full border border-ink/25 text-sm transition-colors hover:border-terra hover:text-terra"
+                            className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/25 text-base transition-colors hover:border-terra hover:text-terra"
                           >
                             +
                           </button>

@@ -82,20 +82,20 @@ export default function DistributorForm() {
   return (
     <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-7 sm:grid-cols-2">
       <div>
-        <label className={labelClass}>Full Name *</label>
-        <input name="fullName" required className={fieldClass} />
+        <label htmlFor="dist-name" className={labelClass}>Full Name *</label>
+        <input id="dist-name" name="fullName" required autoComplete="name" className={fieldClass} />
       </div>
       <div>
-        <label className={labelClass}>Email Address *</label>
-        <input type="email" name="email" required className={fieldClass} />
+        <label htmlFor="dist-email" className={labelClass}>Email Address *</label>
+        <input id="dist-email" type="email" name="email" required autoComplete="email" className={fieldClass} />
       </div>
       <div>
-        <label className={labelClass}>Company / Organisation</label>
-        <input name="company" className={fieldClass} />
+        <label htmlFor="dist-company" className={labelClass}>Company / Organisation</label>
+        <input id="dist-company" name="company" autoComplete="organization" className={fieldClass} />
       </div>
       <div>
-        <label className={labelClass}>Your Region *</label>
-        <select name="region" required defaultValue="" className={fieldClass}>
+        <label htmlFor="dist-region" className={labelClass}>Your Region *</label>
+        <select id="dist-region" name="region" required defaultValue="" className={fieldClass}>
           <option value="" disabled>
             Select your region
           </option>
@@ -107,8 +107,8 @@ export default function DistributorForm() {
         </select>
       </div>
       <div className="sm:col-span-2">
-        <label className={labelClass}>Distribution Channel *</label>
-        <select name="channel" required defaultValue="" className={fieldClass}>
+        <label htmlFor="dist-channel" className={labelClass}>Distribution Channel *</label>
+        <select id="dist-channel" name="channel" required defaultValue="" className={fieldClass}>
           <option value="" disabled>
             How would you distribute?
           </option>
@@ -120,8 +120,8 @@ export default function DistributorForm() {
         </select>
       </div>
       <div className="sm:col-span-2">
-        <label className={labelClass}>Message *</label>
-        <textarea name="message" required rows={3} className={fieldClass} />
+        <label htmlFor="dist-message" className={labelClass}>Message *</label>
+        <textarea id="dist-message" name="message" required rows={3} className={fieldClass} />
       </div>
       <div className="sm:col-span-2">
         <button

@@ -10,7 +10,7 @@ export default function CheckoutPage() {
   return (
     <>
       <Nav />
-      <main>
+      <main id="main">
         <CheckoutClient />
       </main>
     </>

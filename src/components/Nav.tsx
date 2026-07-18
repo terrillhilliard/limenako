@@ -54,7 +54,8 @@ export default function Nav() {
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle navigation"
-            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+            aria-expanded={open}
+            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
           >
             <span className={`h-px w-6 bg-ink transition-transform ${open ? "translate-y-[7px] rotate-45" : ""}`} />
             <span className={`h-px w-6 bg-ink transition-opacity ${open ? "opacity-0" : ""}`} />

@@ -39,6 +39,8 @@ export default function NewsletterForm() {
       <input
         type="email"
         required
+        aria-label="Email address"
+        autoComplete="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Your email address"

@@ -15,7 +15,7 @@ export default function CheckoutSuccessPage() {
   return (
     <>
       <Nav />
-      <main className="mx-auto max-w-xl px-6 py-48 text-center">
+      <main id="main" className="mx-auto max-w-xl px-6 py-48 text-center">
         <p className="mb-6 text-[11px] font-semibold uppercase tracking-mega text-terra">
           Order Confirmed
         </p>

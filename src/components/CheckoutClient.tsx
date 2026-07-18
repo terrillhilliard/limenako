@@ -94,12 +94,14 @@ export default function CheckoutClient() {
         {stage === "details" && (
           <form onSubmit={handleContinue} className="space-y-6">
             <div>
-              <label className="mb-2 block text-[10px] font-semibold uppercase tracking-wide-sm text-ink-soft">
+              <label htmlFor="checkout-email" className="mb-2 block text-[10px] font-semibold uppercase tracking-wide-sm text-ink-soft">
                 Email Address *
               </label>
               <input
+                id="checkout-email"
                 type="email"
                 required
+                autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full border-0 border-b border-ink/25 bg-transparent px-0 py-3 text-sm text-ink outline-none transition-colors focus:border-terra"

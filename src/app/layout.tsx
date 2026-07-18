@@ -3,6 +3,7 @@ import { Young_Serif, Newsreader, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import CartDrawer from "@/components/CartDrawer";
+import MotionProvider from "@/components/MotionProvider";
 
 const youngSerif = Young_Serif({
   variable: "--font-young-serif",
@@ -38,9 +39,14 @@ export default function RootLayout({
       className={`${youngSerif.variable} ${newsreader.variable} ${hanken.variable}`}
     >
       <body className="min-h-screen bg-paper text-ink">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <CartProvider>
-          {children}
-          <CartDrawer />
+          <MotionProvider>
+            {children}
+            <CartDrawer />
+          </MotionProvider>
         </CartProvider>
       </body>
     </html>
