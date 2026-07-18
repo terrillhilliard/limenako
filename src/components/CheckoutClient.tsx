@@ -30,10 +30,7 @@ export default function CheckoutClient() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
-          items: items.map((item) => ({
-            productId: item.productId,
-            quantity: item.quantity,
-          })),
+          items: items.map((item) => ({ productId: item.productId, quantity: item.quantity })),
         }),
       });
       const json = await res.json().catch(() => null);
@@ -51,43 +48,53 @@ export default function CheckoutClient() {
 
   if (lines.length === 0) {
     return (
-      <div className="mx-auto max-w-lg px-6 py-32 text-center">
-        <p className="font-display text-2xl">Your cart is empty.</p>
+      <div className="mx-auto max-w-lg px-6 py-40 text-center">
+        <p className="display-tight text-5xl uppercase text-ink">Empty</p>
+        <p className="mt-4 font-serif text-xl italic text-ink-soft">Your cart is empty.</p>
         <Link
           href="/#products"
-          className="mt-6 inline-block rounded-full bg-navy px-8 py-3 text-xs font-semibold uppercase tracking-widest-xl text-cream hover:bg-gold hover:text-navy-deep"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra"
         >
-          Browse Products
+          Browse Products →
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="mx-auto grid max-w-4xl grid-cols-1 gap-12 px-6 py-32 md:grid-cols-2">
+    <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-16 px-5 pb-28 pt-36 md:grid-cols-2 md:px-10">
       <div>
-        <h1 className="font-display text-3xl">Checkout</h1>
-        <ul className="mt-8 space-y-4">
+        <p className="mb-4 text-[11px] font-semibold uppercase tracking-mega text-terra">Checkout</p>
+        <h1 className="display-tight text-5xl text-ink md:text-6xl">
+          Your <span className="font-serif italic">order</span>
+        </h1>
+
+        <ul className="mt-10 divide-y divide-ink/10 border-y border-ink/15">
           {lines.map(({ product, quantity }) => (
-            <li key={product.id} className="flex items-center justify-between text-sm">
-              <span>
-                {product.name} × {quantity}
+            <li key={product.id} className="flex items-center gap-4 py-5">
+              <div aria-hidden className="h-16 w-14 shrink-0 rounded-sm" style={{ background: product.gradient }} />
+              <div className="flex-1">
+                <p className="font-serif text-lg text-ink">{product.name}</p>
+                <p className="text-[11px] uppercase tracking-wide-sm text-ink-soft">Qty {quantity}</p>
+              </div>
+              <span className="display-tight text-lg text-ink">
+                {formatPrice(product.priceCents * quantity)}
               </span>
-              <span>{formatPrice(product.priceCents * quantity)}</span>
             </li>
           ))}
         </ul>
-        <div className="mt-6 flex items-center justify-between border-t border-navy/10 pt-4 font-display text-lg">
-          <span>Total</span>
-          <span>{formatPrice(subtotalCents)}</span>
+
+        <div className="mt-6 flex items-baseline justify-between">
+          <span className="text-[11px] font-semibold uppercase tracking-wide-sm text-ink-soft">Total</span>
+          <span className="display-tight text-3xl text-terra">{formatPrice(subtotalCents)}</span>
         </div>
       </div>
 
-      <div>
+      <div className="md:pt-16">
         {stage === "details" && (
-          <form onSubmit={handleContinue} className="space-y-4">
+          <form onSubmit={handleContinue} className="space-y-6">
             <div>
-              <label className="mb-2 block text-[11px] font-medium uppercase tracking-widest-xl text-navy/60">
+              <label className="mb-2 block text-[10px] font-semibold uppercase tracking-wide-sm text-ink-soft">
                 Email Address *
               </label>
               <input
@@ -95,27 +102,27 @@ export default function CheckoutClient() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border border-navy/15 bg-cream px-4 py-3 text-sm text-navy outline-none focus:border-gold"
+                className="w-full border-0 border-b border-ink/25 bg-transparent px-0 py-3 text-sm text-ink outline-none transition-colors focus:border-terra"
               />
             </div>
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error && <p className="text-xs text-terra">{error}</p>}
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-full bg-navy px-8 py-4 text-xs font-semibold uppercase tracking-widest-xl text-cream transition-colors hover:bg-gold hover:text-navy-deep disabled:opacity-60"
+              className="group inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra disabled:opacity-60"
             >
               {loading ? "Loading…" : "Continue to Payment"}
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </button>
           </form>
         )}
 
         {stage === "payment" && clientSecret && (
-          <Elements
-            stripe={getStripe()}
-            options={{ clientSecret, appearance: { theme: "stripe" } }}
-          >
-            <CheckoutForm />
-          </Elements>
+          <div className="stripe-shell">
+            <Elements stripe={getStripe()} options={{ clientSecret, appearance: { theme: "flat" } }}>
+              <CheckoutForm />
+            </Elements>
+          </div>
         )}
       </div>
     </div>

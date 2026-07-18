@@ -1,33 +1,51 @@
+import Reveal from "./Reveal";
+
 export default function Story() {
   return (
-    <section id="story" className="bg-cream py-28">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 md:grid-cols-2 md:px-10">
-        <div
-          aria-hidden
-          className="order-2 h-96 rounded-3xl bg-[linear-gradient(135deg,#1a2b42,#3a4f6b_45%,#d9bd85)] shadow-2xl md:order-1"
-        />
+    <section id="story" className="relative overflow-hidden bg-paper py-24 md:py-36">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-5 md:grid-cols-12 md:px-10">
+        {/* Oversized index number, grid-breaking */}
+        <Reveal className="md:col-span-4" y={40}>
+          <div className="relative">
+            <span className="display-tight block text-[28vw] leading-none text-terra/15 md:text-[16rem]">
+              01
+            </span>
+            <span className="absolute left-2 top-4 text-[11px] font-semibold uppercase tracking-mega text-ink-soft">
+              The Ritual
+            </span>
+          </div>
+        </Reveal>
 
-        <div className="order-1 md:order-2">
-          <p className="mb-4 text-xs font-medium uppercase tracking-widest-xl text-gold">
-            The Ritual
-          </p>
-          <h2 className="font-display text-4xl leading-tight sm:text-5xl">
-            You, reclaimed.
-          </h2>
-          <p className="mt-6 text-base leading-relaxed text-navy/80">
-            Limenako is more than skincare — it is a return to self. Our
-            formulations honour ancestral wisdom passed through generations,
-            blending sacred botanicals with modern ritual to create moments of
-            healing and renewal.
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-navy/80">
-            Each product is a pre-emptive pause. A reminder to slow down, to
-            nourish, to honour the skin you&rsquo;re in. Because self-care is
-            not indulgence — it is inheritance.
-          </p>
-          <p className="mt-8 font-display text-2xl italic text-gold">
-            &ldquo;Respect your ritual.&rdquo;
-          </p>
+        <div className="flex flex-col justify-center md:col-span-8 md:pl-12">
+          <Reveal delay={0.05}>
+            <h2 className="display-tight text-5xl text-ink md:text-7xl">
+              You,
+              <span className="font-serif italic text-terra"> reclaimed.</span>
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.12}>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
+              Limenako is more than skincare — it is a return to self. Our
+              formulations honour ancestral wisdom passed through generations,
+              blending sacred botanicals with modern ritual to create moments of
+              healing and renewal.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.18}>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
+              Each product is a pre-emptive pause. A reminder to slow down, to
+              nourish, to honour the skin you&rsquo;re in. Because self-care is
+              not indulgence — it is inheritance.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.24}>
+            <p className="mt-10 font-serif text-2xl italic text-indigo">
+              &ldquo;Respect your ritual.&rdquo;
+            </p>
+          </Reveal>
         </div>
       </div>
     </section>

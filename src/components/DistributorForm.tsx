@@ -25,8 +25,10 @@ const CHANNELS = [
   "Other",
 ];
 
-const inputClass =
-  "w-full rounded-lg border border-navy/15 bg-cream px-4 py-3 text-sm text-navy placeholder:text-navy/40 outline-none focus:border-gold";
+const labelClass =
+  "mb-2 block text-[10px] font-semibold uppercase tracking-wide-sm text-paper/50";
+const fieldClass =
+  "w-full border-0 border-b border-paper/25 bg-transparent px-0 py-3 text-sm text-paper outline-none transition-colors placeholder:text-paper/30 focus:border-terra-bright [&>option]:text-ink";
 
 export default function DistributorForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -70,43 +72,30 @@ export default function DistributorForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-gold/30 bg-cream-soft p-10 text-center">
-        <p className="font-display text-2xl text-navy">Inquiry received.</p>
-        <p className="mt-3 text-sm text-navy/70">
-          We respond within 3–5 business days.
-        </p>
+      <div className="border border-paper/20 bg-paper/5 p-12 text-center">
+        <p className="font-serif text-3xl italic text-sand">Inquiry received.</p>
+        <p className="mt-3 text-sm text-paper/60">We respond within 3–5 business days.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-      <div className="sm:col-span-1">
-        <label className="mb-2 block text-[11px] font-medium uppercase tracking-widest-xl text-navy/60">
-          Full Name *
-        </label>
-        <input name="fullName" required className={inputClass} />
+    <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-7 sm:grid-cols-2">
+      <div>
+        <label className={labelClass}>Full Name *</label>
+        <input name="fullName" required className={fieldClass} />
       </div>
-
-      <div className="sm:col-span-1">
-        <label className="mb-2 block text-[11px] font-medium uppercase tracking-widest-xl text-navy/60">
-          Email Address *
-        </label>
-        <input type="email" name="email" required className={inputClass} />
+      <div>
+        <label className={labelClass}>Email Address *</label>
+        <input type="email" name="email" required className={fieldClass} />
       </div>
-
-      <div className="sm:col-span-1">
-        <label className="mb-2 block text-[11px] font-medium uppercase tracking-widest-xl text-navy/60">
-          Company / Organisation
-        </label>
-        <input name="company" className={inputClass} />
+      <div>
+        <label className={labelClass}>Company / Organisation</label>
+        <input name="company" className={fieldClass} />
       </div>
-
-      <div className="sm:col-span-1">
-        <label className="mb-2 block text-[11px] font-medium uppercase tracking-widest-xl text-navy/60">
-          Your Region *
-        </label>
-        <select name="region" required defaultValue="" className={inputClass}>
+      <div>
+        <label className={labelClass}>Your Region *</label>
+        <select name="region" required defaultValue="" className={fieldClass}>
           <option value="" disabled>
             Select your region
           </option>
@@ -117,12 +106,9 @@ export default function DistributorForm() {
           ))}
         </select>
       </div>
-
       <div className="sm:col-span-2">
-        <label className="mb-2 block text-[11px] font-medium uppercase tracking-widest-xl text-navy/60">
-          Distribution Channel *
-        </label>
-        <select name="channel" required defaultValue="" className={inputClass}>
+        <label className={labelClass}>Distribution Channel *</label>
+        <select name="channel" required defaultValue="" className={fieldClass}>
           <option value="" disabled>
             How would you distribute?
           </option>
@@ -133,26 +119,21 @@ export default function DistributorForm() {
           ))}
         </select>
       </div>
-
       <div className="sm:col-span-2">
-        <label className="mb-2 block text-[11px] font-medium uppercase tracking-widest-xl text-navy/60">
-          Message *
-        </label>
-        <textarea name="message" required rows={4} className={inputClass} />
+        <label className={labelClass}>Message *</label>
+        <textarea name="message" required rows={3} className={fieldClass} />
       </div>
-
       <div className="sm:col-span-2">
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full rounded-full bg-navy px-8 py-4 text-xs font-semibold uppercase tracking-widest-xl text-cream transition-colors hover:bg-gold hover:text-navy-deep disabled:opacity-60 sm:w-auto"
+          className="group inline-flex items-center gap-3 rounded-full bg-terra px-8 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra-bright disabled:opacity-60"
         >
           {status === "loading" ? "Submitting…" : "Submit Inquiry"}
+          <span className="transition-transform group-hover:translate-x-1">→</span>
         </button>
-        {status === "error" && (
-          <p className="mt-3 text-xs text-red-600">{error}</p>
-        )}
-        <p className="mt-3 text-xs text-navy/50">
+        {status === "error" && <p className="mt-4 text-xs text-terra-bright">{error}</p>}
+        <p className="mt-4 text-[11px] uppercase tracking-wide-sm text-paper/40">
           We respond within 3–5 business days.
         </p>
       </div>

@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import CartDrawer from "@/components/CartDrawer";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  axes: ["opsz", "SOFT", "WONK"],
+  style: ["normal", "italic"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const hanken = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Limenako | Simply Sacred",
+  title: "Limenako — Simply Sacred",
   description:
-    "Reclaim your glow through sacred rituals rooted in ancestry, crafted for your skin, your home, and your soul.",
+    "Sacred skincare born between Ho Chi Minh City and Southern Africa. Reclaim your glow through rituals rooted in ancestry.",
 };
 
 export default function RootLayout({
@@ -27,8 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-cream text-navy font-sans antialiased">
+    <html lang="en" className={`${fraunces.variable} ${hanken.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700,500,400&display=swap"
+        />
+      </head>
+      <body className="min-h-screen bg-paper text-ink">
         <CartProvider>
           {children}
           <CartDrawer />

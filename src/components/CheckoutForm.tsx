@@ -1,11 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import {
-  PaymentElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -22,9 +18,7 @@ export default function CheckoutForm() {
 
     const { error: confirmError } = await stripe.confirmPayment({
       elements,
-      confirmParams: {
-        return_url: `${window.location.origin}/checkout/success`,
-      },
+      confirmParams: { return_url: `${window.location.origin}/checkout/success` },
     });
 
     if (confirmError) {
@@ -36,13 +30,14 @@ export default function CheckoutForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <PaymentElement />
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-terra">{error}</p>}
       <button
         type="submit"
         disabled={!stripe || submitting}
-        className="w-full rounded-full bg-navy px-8 py-4 text-xs font-semibold uppercase tracking-widest-xl text-cream transition-colors hover:bg-gold hover:text-navy-deep disabled:opacity-60"
+        className="group flex w-full items-center justify-center gap-3 rounded-full bg-ink px-8 py-4 text-[11px] font-semibold uppercase tracking-wide-sm text-paper transition-colors hover:bg-terra disabled:opacity-60"
       >
         {submitting ? "Processing…" : "Pay Now"}
+        <span className="transition-transform group-hover:translate-x-1">→</span>
       </button>
     </form>
   );
